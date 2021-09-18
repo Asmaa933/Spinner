@@ -19,7 +19,7 @@ class SpinnerView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func showSpinner() {
         mainLayer.frame = self.bounds
         createFirstLayer()
@@ -33,7 +33,8 @@ class SpinnerView: UIView {
     func removeSpinner() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            self.mainLayer.sublayers?.removeAll()
+            self.removeLoadingLayers()
+            self.createSuccessLayer()
         }
     }
 }
@@ -108,5 +109,59 @@ private extension SpinnerView {
         rotationAnimation.duration = 2
         rotationAnimation.repeatCount = .infinity
         return rotationAnimation
+    }
+    
+    func removeLoadingLayers() {
+        self.mainLayer.removeAnimation(forKey: "rotation")
+        self.mainLayer.sublayers?.removeAll()
+    }
+    
+    func createSuccessLayer() {
+        let successLayer = CAShapeLayer()
+        let path = UIBezierPath()
+        let layerCenter = CGPoint(x: mainLayer.bounds.width / 2,
+                                  y: mainLayer.bounds.height / 2)
+        path.addArc(withCenter: layerCenter,
+                    radius: calculateRadius(center: center),
+                    startAngle: 0,
+                    endAngle: 2 * .pi,
+                    clockwise: true)
+        successLayer.path = path.cgPath
+        successLayer.fillColor = UIColor.green.cgColor
+        mainLayer.addSublayer(successLayer)
+        let checkMarkLayer = createCheckMarkLayer()
+        checkMarkLayer.add(createCheckMarkAnimation(), forKey: "checkMarkAnimation")
+        successLayer.addSublayer(checkMarkLayer)
+    }
+    
+    // To Do make checkmark depend on size
+    func createCheckMarkLayer() -> CAShapeLayer {
+        let checkMarkLayer = CAShapeLayer()
+        
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: 20 , y: 50))
+        path.addLine(to: CGPoint(x: 45, y:  75))
+        path.addLine(to: CGPoint(x: 70, y: 20))
+        checkMarkLayer.fillColor = UIColor.clear.cgColor
+        checkMarkLayer.strokeColor = UIColor.white.cgColor
+        checkMarkLayer.lineWidth = 5
+        checkMarkLayer.path = path.cgPath
+        return checkMarkLayer
+    }
+    
+    func createCheckMarkAnimation() -> CABasicAnimation{
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.fromValue = 0
+        animation.toValue = 1
+        animation.duration = 1
+        animation.isRemovedOnCompletion = true
+        animation.delegate = self
+        return animation
+    }
+}
+
+extension SpinnerView: CAAnimationDelegate {
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        self.removeFromSuperview()
     }
 }
