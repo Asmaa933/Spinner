@@ -9,8 +9,10 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    //MARK: - Outlets
     @IBOutlet private weak var tableView: UITableView!
     
+    //MARK: - Variables
     private var spinner = SpinnerView()
     private var postsArray = [Post]() {
         didSet {
@@ -25,6 +27,7 @@ class HomeViewController: UIViewController {
     }
 }
 
+//MARK: - Helper Methods
 private extension HomeViewController {
     
     func getPosts() {
@@ -49,8 +52,8 @@ private extension HomeViewController {
     
     func removeSpinner() {
         DispatchQueue.main.async {[weak self] in
-            self?.tableView.isUserInteractionEnabled = true
             self?.spinner.removeSpinner()
+            self?.tableView.isUserInteractionEnabled = true
         }
     }
     
@@ -66,11 +69,14 @@ private extension HomeViewController {
     }
 }
 
+//MARK: - UITableViewDelegate Imp
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(postsArray[indexPath.row].title ?? "")
     }
 }
+
+//MARK: - UITableViewDataSource Imp
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
