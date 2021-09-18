@@ -106,7 +106,7 @@ private extension SpinnerView {
         let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation")
         rotationAnimation.fromValue = 0.0
         rotationAnimation.toValue = Double.pi * 2
-        rotationAnimation.duration = 2
+        rotationAnimation.duration = 1
         rotationAnimation.repeatCount = .infinity
         return rotationAnimation
     }
