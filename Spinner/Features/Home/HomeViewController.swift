@@ -11,6 +11,10 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let spinner = SpinnerView()
+       spinner.showSpinner(at: self.view)
+    
+        
     }
 }
 
