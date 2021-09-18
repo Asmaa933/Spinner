@@ -11,20 +11,29 @@ class SpinnerView: UIView {
 
     private let mainLayer = CAShapeLayer()
     
-    func showSpinner(at view: UIView) {
-        mainLayer.frame = view.bounds
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        showSpinner()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func showSpinner() {
+        mainLayer.frame = self.bounds
         createFirstLayer()
         createSecondLayer()
-        view.layer.addSublayer(mainLayer)
+        self.layer.addSublayer(mainLayer)
         mainLayer.add(createRotationAnimation(),
-                      forKey: nil)
+                      forKey: "rotation")
             
     }
 
     func removeSpinner() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            self.removeFromSuperview()
+            self.mainLayer.sublayers?.removeAll()
         }
     }
 }
