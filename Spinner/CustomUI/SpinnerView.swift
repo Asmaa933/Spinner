@@ -162,6 +162,7 @@ private extension SpinnerView {
 
 extension SpinnerView: CAAnimationDelegate {
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        self.layer.sublayers?.removeAll()
         self.removeFromSuperview()
     }
 }
