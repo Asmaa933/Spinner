@@ -26,4 +26,4 @@ when the task finished I needed to remove loadingView and show success one
 
 ## Screenshot
 
-<img src="https://user-images.githubusercontent.com/44899782/133910817-82e244be-e6d9-439c-bf3c-e68601b7785f.gif" height = 200 />
+<img src="https://user-images.githubusercontent.com/44899782/133911207-c2d90e60-590b-4f00-9851-57221b20d7c4.gif" height = 200 />
