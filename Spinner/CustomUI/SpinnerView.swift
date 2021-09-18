@@ -9,8 +9,12 @@ import UIKit
 
 class SpinnerView: UIView {
 
+    //MARK: - Variables
+
     private let mainLayer = CAShapeLayer()
     
+    //MARK: - Init
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         showSpinner()
@@ -39,6 +43,7 @@ class SpinnerView: UIView {
     }
 }
 
+//MARK: - Helper Methods
 private extension SpinnerView {
     
     func configureLayer(_ layer: CAShapeLayer) {
