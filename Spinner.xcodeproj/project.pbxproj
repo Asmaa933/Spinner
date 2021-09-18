@@ -14,6 +14,7 @@
 		994CDF3F26EECB5C001EC2A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 994CDF3E26EECB5C001EC2A5 /* Assets.xcassets */; };
 		994CDF4226EECB5C001EC2A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 994CDF4026EECB5C001EC2A5 /* LaunchScreen.storyboard */; };
 		994CDF4F26EECD27001EC2A5 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994CDF4E26EECD27001EC2A5 /* SpinnerView.swift */; };
+		994CDF6C26F68F38001EC2A5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994CDF6B26F68F38001EC2A5 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		994CDF4126EECB5C001EC2A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		994CDF4326EECB5C001EC2A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		994CDF4E26EECD27001EC2A5 /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
+		994CDF6B26F68F38001EC2A5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				994CDF4926EECB9A001EC2A5 /* App */,
+				994CDF6A26F68F2D001EC2A5 /* Model */,
 				994CDF4C26EECC3F001EC2A5 /* Features */,
 				994CDF4B26EECBE5001EC2A5 /* CustomUI */,
 				994CDF4A26EECBC2001EC2A5 /* SupportingFiles */,
@@ -108,6 +111,14 @@
 				994CDF3926EECB59001EC2A5 /* HomeViewController.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		994CDF6A26F68F2D001EC2A5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				994CDF6B26F68F38001EC2A5 /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +194,7 @@
 				994CDF3A26EECB59001EC2A5 /* HomeViewController.swift in Sources */,
 				994CDF3626EECB59001EC2A5 /* AppDelegate.swift in Sources */,
 				994CDF4F26EECD27001EC2A5 /* SpinnerView.swift in Sources */,
+				994CDF6C26F68F38001EC2A5 /* User.swift in Sources */,
 				994CDF3826EECB59001EC2A5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
