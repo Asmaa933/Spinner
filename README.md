@@ -2,19 +2,19 @@
 
 ## About
 
-Spinner is an activity indicator spins while an unquantifiable task, such as loading or synchronizing complex data, is performed. It disappears when the task completes
+Spinner is an activity indicator that spins while an unquantifiable task, such as loading or synchronizing complex data, is performed. It disappears when the task completes
 
 ## Steps
 
-Spinner mainly deals with layers by adding, removing and animate them
+Spinner mainly deals with layers by adding, removing, and animate them
 
-Create LoadingView
-- Create SpinnerView and add it to tableview
-- create main layer to add it to SpinnerView and animate it with infinity repeation
-- create 2 sublayer part of oval with arrow at end of it 
-- add the 2 sublayers to main layer
+### Create LoadingView
+- Create SpinnerView and add it to tableView
+- create main layer to add it to SpinnerView and animate it with infinity repetition
+- create 2 sublayers part of oval with an arrow at end of it 
+- add the 2 sublayers to the main layer
 
-SuccessView
+### SuccessView
 
 when the task finished I needed to remove loadingView and show success one
 - remove sublayers of main layer
