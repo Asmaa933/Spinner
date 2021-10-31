@@ -14,12 +14,21 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupView()
     }
 }
 
 //MARK: - Helper Methods
 private extension HomeViewController {
+    
+    func setupView() {
+        showSpinner()
+        
+        /// wait 3 seconds and execute removeSpinner
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {[weak self] in
+            self?.removeSpinner()
+        }
+    }
     
     func showSpinner() {
         spinner = SpinnerView(frame: CGRect(x: view.frame.width / 2, y: view.frame.height / 2, width: 100, height: 100))
@@ -30,8 +39,9 @@ private extension HomeViewController {
     
     func removeSpinner() {
         DispatchQueue.main.async {[weak self] in
-            self?.spinner.removeSpinner()
-            self?.view.isUserInteractionEnabled = true
+            guard let self = self else { return }
+            self.spinner.removeSpinner()
+            self.view.isUserInteractionEnabled = true
         }
     }
 }
