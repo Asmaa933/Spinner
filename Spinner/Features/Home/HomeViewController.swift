@@ -8,16 +8,12 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    
-    //MARK: - Outlets
-    @IBOutlet private weak var tableView: UITableView!
-    
+        
     //MARK: - Variables
     private var spinner = SpinnerView()
     private var postsArray = [Post]() {
         didSet {
             removeSpinner()
-            reloadTableView()
         }
     }
     
@@ -46,20 +42,14 @@ private extension HomeViewController {
     func showSpinner() {
         spinner = SpinnerView(frame: CGRect(x: view.frame.width / 2, y: view.frame.height / 2, width: 100, height: 100))
         spinner.center = view.center
-        tableView.isUserInteractionEnabled = false
-        tableView.addSubview(spinner)
+        view.isUserInteractionEnabled = false
+        view.addSubview(spinner)
     }
     
     func removeSpinner() {
         DispatchQueue.main.async {[weak self] in
             self?.spinner.removeSpinner()
-            self?.tableView.isUserInteractionEnabled = true
-        }
-    }
-    
-    func reloadTableView() {
-        DispatchQueue.main.async {[weak self] in
-            self?.tableView.reloadData()
+            self?.view.isUserInteractionEnabled = true
         }
     }
     
@@ -67,27 +57,4 @@ private extension HomeViewController {
         removeSpinner()
         print(error ?? "")
     }
-}
-
-//MARK: - UITableViewDelegate Imp
-extension HomeViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(postsArray[indexPath.row].title ?? "")
-    }
-}
-
-//MARK: - UITableViewDataSource Imp
-
-extension HomeViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return postsArray.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = postsArray[indexPath.row].title
-      //  cell.detailTextLabel?.text = postsArray[indexPath.row].body
-        return cell
-    }
-    
 }
